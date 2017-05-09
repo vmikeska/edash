@@ -1,3 +1,40 @@
-<h1>
-  {{title}}
-</h1>
+<div class="window-all" [ngClass]="responsiveClass">
+
+  <div class="bck"></div>
+
+  <div class="dash-all" [ngClass]="menuOpenedClass">
+
+    <div class="dash-panel">
+
+      <div class="srv">
+        <span (click)="switchMenuVisibility()" class="close icon-times-circle"></span>
+      </div>
+
+      <div class="content">
+
+        <div class="tmp-box"></div>
+
+        <div class="tmp-box"></div>
+
+        <div class="tmp-box"></div>
+
+        <div>
+          <span id="addForm" (click)="addWin('AnotherId', 'Another name')" class="lbtn focus-orange">Add form</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="windows" (mousemove)="mouseMove($event)" (mouseup)="mouseUp($event)">
+
+    <div class="mobile-btn-bck">
+      <span class="ico icon-list" (click)="switchMenuVisibility()"></span>
+    </div>
+
+    <app-win *ngFor="let win of wins" [win]="win"></app-win>
+
+  </div>
+
+</div>

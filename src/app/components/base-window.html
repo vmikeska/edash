@@ -1,0 +1,50 @@
+
+
+
+
+<div 
+  [id]="_win.id" 
+  class="win-all" 
+  [ngClass]="_win.responsiveClass"
+  style="width: 600px; height: 300px;" 
+  [style.left.px]="_win.left" 
+  [style.top.px]="_win.top">  
+  
+  <div class="bar" (mousedown)="_win.mouseDown($event)">{{_win.title}}</div>
+  <div class="content">
+
+  <div class="table-wrap">
+
+    <table cellspacing="0" cellpadding="0" class="value-table">
+          
+          <tr class="header">
+            <th>Stichtag</th>
+            <th>Beschreibung</th>
+            <th>Download</th>
+          </tr>
+
+          <tr class="data-row">
+            <td>08.02.2017</td>
+            <td>Gas-Union Marktbericht</td>
+            <td>Download</td>
+          </tr>
+
+          <tr class="data-row">
+            <td>08.02.2017</td>
+            <td>Gas-Union Marktbericht</td>
+            <td>Download</td>
+          </tr>
+
+          <tr class="data-row">
+            <td>08.02.2017</td>
+            <td>Gas-Union Marktbericht</td>
+            <td>Download</td>
+          </tr>
+
+
+        </table>
+
+  </div>
+
+  </div>
+</div>
