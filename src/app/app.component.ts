@@ -4,9 +4,10 @@ import _ from "lodash";
 
 import { WinDragging } from "./services/WinDragging"
 
-import { ViewEncapsulation } from '@angular/core';
+import { ViewEncapsulation, AfterViewInit, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 import { $, LayoutSize } from './globals';
+import {TradingScreen} from "app/components/trading-screen";
 
 
 @Component({
@@ -21,14 +22,31 @@ import { $, LayoutSize } from './globals';
 
 
 
-export class AppComponent {
+
+export class AppComponent implements AfterViewInit {
+  
+  ngAfterViewInit(): void {
+     this.loadComponent();
+  }
+
+loadComponent() {
+  
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(TradingScreen);
+
+    let viewContainerRef = this._viewContainerRef;
+    viewContainerRef.clear();
+
+    let componentRef = viewContainerRef.createComponent(componentFactory);
+    (<TradingScreen>componentRef.instance).data = "test data";
+  }
+
 
   public wins: AppWinVM[];
 
   public responsiveClass = "";
   public menuOpenedClass = "";
 
-  constructor() {
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private _viewContainerRef: ViewContainerRef) { 
     this.wins = [];
     
     this.addWin("TheFirst", "General news");

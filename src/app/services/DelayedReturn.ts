@@ -1,22 +1,27 @@
 
 export class DelayedReturn {
 
-			public delay = 1000;
+	public callback: Function;
 
-			private timeoutId = null;
-			private $input: any;
+	public delay = 1000;
 
-			public receive(callback) {
+	private timeoutId = null;
 
-					if (this.timeoutId) {
-							clearTimeout(this.timeoutId);
-							this.timeoutId = null;
-					}
-					this.timeoutId = setTimeout(() => {
-							this.timeoutId = null;
-							callback();
-
-					},
-							this.delay);
-			}
+	public cancel() {
+		if (this.timeoutId) {
+			clearTimeout(this.timeoutId);
+			this.timeoutId = null;
+		}
 	}
+
+	public call() {
+		this.cancel();
+
+		this.timeoutId = setTimeout(() => {
+			this.timeoutId = null;
+			this.callback();
+		},
+		this.delay);
+	}
+
+}

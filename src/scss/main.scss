@@ -3,6 +3,8 @@ $win-bck: #EFEFEF;
 $win-bar: #e4e5e5;
 $win-border: #cacaca;
 
+$red1: 	#ff0000;
+
 $focus1: darkgray;
 
 $orange-light: #FF852E;
@@ -13,6 +15,19 @@ body {
     font-size: 16px;
 
     min-width: 480px;
+}
+
+.test-thing {
+position: absolute;
+top: 100px;
+left: 100px;
+
+    width: 200px;
+    height: 200px;
+
+    background-color: red;
+
+    z-index: 9999999999999999;
 }
 
 .hidden {
@@ -31,20 +46,154 @@ body {
     cursor: pointer
 }
 
-.tmp-box {
-    
-    border: 2px solid black;
+.tbl {
+    display: table;
+    width: 100%;
 
-    height: 200px;
+    .i {
+        display: table-cell;
+        vertical-align: middle;
+    }
 
-    margin-bottom: 10px;
+    .w50 {
+        width: 50%;
+    }
+
+    .l {
+        text-align: left;
+    }
+
+    .r {
+        text-align: right;
+    }
+
+    .c {
+        text-align: center;
+    }
 }
+
+
 
 .dash-all {
     z-index: 999999;
 
+    background-color: #dddddd;
+
     .dash-panel {                
         background-color: $win-bck;
+    }
+
+    .date-all {
+        background-color: #777777;
+
+        .date,.time {
+            display: inline-block;
+            color: white;
+            font-size: 1.4em;
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+
+    $menu-background: #999999;
+
+    .dash-menu {        
+        font-size: 0.9em;
+
+        background-color: $menu-background;
+        color: white;
+
+        border-top: 1px solid $menu-background;
+
+        .layout-tbl {
+            display: table;
+            width: 100%;
+
+            .first-items {
+                display: table-cell;                
+                text-align: left;
+
+                width: 50%;
+
+                .item-all {            
+                    padding: 5px;
+                    
+
+                    cursor: pointer;
+
+                    .ico-cell {
+                        width: 1.4em;
+                    }
+
+                    .ico {
+                        display: inline-block;
+                        vertical-align: middle;
+                        
+                        padding-top: 3px;
+                    }
+
+                    .txt {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    &.active, &:hover {                        
+                        background-color: #777777;
+                    }
+                }
+
+            }
+
+            .second-items {
+                display: table-cell;
+                text-align: left;
+                
+                width: 50%;
+
+                .top {
+                    text-align: right;
+                    padding: 6px;
+
+                    .close {
+                        color: $menu-background;                        
+                        cursor: pointer;
+
+                        font-size: 1.2em;
+
+                         display: inline-block;
+                        
+                        &:hover {
+                            color: $red1;
+                        }
+                    }
+                }
+
+                &.any-items {
+                    background-color: #777777;
+                }
+
+                .item-all {
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    cursor: pointer;
+                    
+                    .item {                        
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        padding-left: 2px;
+
+                        &:hover {
+                            background-color:  $menu-background;
+                        }
+                        
+                    }
+                }
+                
+            }
+        }
+
+        
     }
 
 }
@@ -130,13 +279,11 @@ body {
         top: 0;
         left: 0;
 
-        width: 280px;
+        width: 340px;
         height: 700px;
 
         .dash-panel {
 
-            padding: 10px;
-            
             .srv {
                 display: none;
             }

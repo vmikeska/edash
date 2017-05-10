@@ -1,0 +1,39 @@
+<div class="dash-menu"  (mouseover)="mouseOverAll()" (mouseout)="mouseOutAll()">
+
+  <div class="layout-tbl">
+
+    <div class="first-items">
+
+      <div class="item-all" [ngClass]="{'active': item.active}" *ngFor="let item of items" 
+        (mouseover)="mouseOverFirst(item)" (mouseout)="mouseOutFirst(item)">
+
+        <div class="tbl">
+          <div class="i l ico-cell">
+            <span class="ico" [ngClass]="item.ico"></span>
+          </div>
+          <div class="i l">
+            <span class="txt">{{item.text}}</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="second-items" [ngClass]="{'any-items': selectedSubItems.length > 0}">
+
+        <div class="top" *ngIf="selectedSubItems">
+          <span class="close icon-times" (click)="closeClick()"></span>
+        </div>
+
+        <div class="item-all" *ngFor="let si of selectedSubItems" (click)="itemClicked(si.id)">
+          <div class="item" data-id="{{si.id}}">{{si.text}}</div>
+        </div>
+      
+    </div>
+
+
+  </div>
+
+
+</div>
