@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { WinDragging } from "./services/WinDragging"
 
-import { ViewEncapsulation, AfterViewInit, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { ViewEncapsulation, AfterViewInit, ComponentFactoryResolver, ViewContainerRef, Type } from '@angular/core';
 
 import { $, LayoutSize } from './globals';
 import {TradingScreen} from "app/components/trading-screen";
@@ -23,35 +23,19 @@ import {TradingScreen} from "app/components/trading-screen";
 
 
 
-export class AppComponent implements AfterViewInit {
-  
-  ngAfterViewInit(): void {
-     this.loadComponent();
-  }
-
-loadComponent() {
-  
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(TradingScreen);
-
-    let viewContainerRef = this._viewContainerRef;
-    viewContainerRef.clear();
-
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-    (<TradingScreen>componentRef.instance).data = "test data";
-  }
-
+export class AppComponent {
 
   public wins: AppWinVM[];
 
   public responsiveClass = "";
   public menuOpenedClass = "";
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private _viewContainerRef: ViewContainerRef) { 
+  constructor() { 
     this.wins = [];
     
     this.addWin("TheFirst", "General news");
-    this.addWin("TheSecond", "Window II.");
-    this.addWin("TheThird", "Another Window in the hood");
+    // this.addWin("TheSecond", "Window II.");
+    // this.addWin("TheThird", "Another Window in the hood");
 
     this.resetResponsivity();
   }
@@ -119,7 +103,9 @@ loadComponent() {
 
     win.responsiveClass = win.getRespClass(this.currentSize);
 
+    console.log("pushing");
     this.wins.push(win);
+    console.log("pushed");
 
   }
 

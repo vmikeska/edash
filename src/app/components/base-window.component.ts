@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ComponentFactoryResolver, ViewContainerRef, AfterViewInit, Type, ViewChild } from '@angular/core';
 import { WinDragging } from "../services/WinDragging"
 import { LayoutSize } from "app/globals";
+import { TradingScreen } from "app/components/trading-screen";
 
 
 @Component({
@@ -8,15 +9,48 @@ import { LayoutSize } from "app/globals";
   templateUrl: './base-window.html',
 })
 
-export class AppWin {
+export class AppWin implements AfterViewInit {
+
+  @ViewChild('content', { read: ViewContainerRef }) content;
+  
+
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private _viewContainerRef: ViewContainerRef) {
+
+  }
 
   public _win;
 
   @Input()
   set win(win: AppWinVM) {
     console.log(JSON.stringify(win));
+
+    console.log("assigning");
     this._win = win;
+
   };
+
+  ngAfterViewInit(): void {
+
+    var inst = this.loadComponent<TradingScreen>(TradingScreen);
+
+    //  inst.data = "ala lalas";
+  }
+
+  loadComponent<T>(t: Type<T>) {
+
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(t);
+
+    
+    
+    let componentRef = this.content.createComponent(componentFactory);
+    
+    let instance = (<T>componentRef.instance);
+    
+
+    
+    
+    return instance;
+  }
 
 }
 
@@ -46,22 +80,22 @@ export class AppWinVM {
 
   public getRespClass(size: LayoutSize) {
     var res = "";
-    
+
     if (size === LayoutSize.Web) {
       res = "win-dynamic";
     }
 
     if (size === LayoutSize.Mobile) {
-        res = "win-static";
+      res = "win-static";
     }
 
     return res;
   }
 
   public layoutChanged(newSize: LayoutSize, wins: AppWinVM[]) {
-    
+
     this.responsiveClass = this.getRespClass(newSize);
-    
+
   }
 
 }

@@ -10,9 +10,7 @@ export class TradingScreen {
 
 
   public data: string;
-// constructor(private injector: Injector) {
-//     // this.showNum = this.injector.get('showNum');
-//   }
+
  
 
 }
