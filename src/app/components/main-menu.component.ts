@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DelayedReturn } from "app/services/DelayedReturn";
+import { WinCreationService } from "app/services/win-creation.service";
+import { TradingScreen } from "app/components/trading-screen";
 
 
 @Component({
@@ -63,7 +65,7 @@ export class MainMenu {
 
   public selectedSubItems: MenuSubItem[] = [];
 
-  constructor() {
+  constructor( private _winCreateService: WinCreationService) {
     this.initMenuDelay();
   }
 
@@ -92,7 +94,8 @@ export class MainMenu {
     console.log(id);
 
     if (id === "TradingScreen") {
-
+      var inst = this._winCreateService.createWinInstance<TradingScreen>(TradingScreen);
+      inst.title = "nazdar";
     }
 
     this.deactivateFirstMenu();

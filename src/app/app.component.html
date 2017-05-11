@@ -15,6 +15,9 @@
       <div class="content">
 
         <div class="date-all">
+          
+          
+
           <div class="tbl">
             <div class="i c w50">
               <span class="date">10.05.2017</span>
@@ -42,7 +45,10 @@
       <span class="ico icon-list" (click)="switchMenuVisibility()"></span>
     </div>
 
-    <app-win *ngFor="let win of wins" [win]="win"></app-win>
+    <ng-template add-host></ng-template>
+
+    <div #content></div>
+
 
   </div>
 

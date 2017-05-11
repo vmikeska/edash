@@ -1,4 +1,4 @@
-import { Component, Input, ComponentFactoryResolver, ViewContainerRef, AfterViewInit, Type, ViewChild } from '@angular/core';
+import { Component, Input, ComponentFactoryResolver, ViewContainerRef, AfterViewInit, Type, ViewChild, ReflectiveInjector } from '@angular/core';
 import { WinDragging } from "../services/WinDragging"
 import { LayoutSize } from "app/globals";
 import { TradingScreen } from "app/components/trading-screen";
@@ -14,62 +14,20 @@ export class AppWin implements AfterViewInit {
   @ViewChild('content', { read: ViewContainerRef }) content;
   
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private _viewContainerRef: ViewContainerRef) {
+  constructor(private _componentFactoryResolver: ComponentFactoryResolver, private _viewContainerRef: ViewContainerRef) {
 
   }
 
-  public _win;
 
-  @Input()
-  set win(win: AppWinVM) {
-    console.log(JSON.stringify(win));
+ public responsiveClass = this.getRespClass(LayoutSize.Web);
 
-    console.log("assigning");
-    this._win = win;
+  public id: string;
+  public title: string;
+  public left = 300;
+  public top = 300;
 
-  };
-
-  ngAfterViewInit(): void {
-
-    var inst = this.loadComponent<TradingScreen>(TradingScreen);
-
-    //  inst.data = "ala lalas";
-  }
-
-  loadComponent<T>(t: Type<T>) {
-
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(t);
-
-    
-    
-    let componentRef = this.content.createComponent(componentFactory);
-    
-    let instance = (<T>componentRef.instance);
-    
-
-    
-    
-    return instance;
-  }
-
-}
-
-export class AppWinVM {
-
-  constructor(id: string) {
-    this.id = id;
-  }
-
-  public responsiveClass = "";
-
-  id: string;
-  title: string;
-
-  left: number;
-  top: number;
-
-  leftBackup: number;
-  topBackup: number;
+  // public leftBackup: number;
+  // public topBackup: number;
 
   public mouseDown(e: MouseEvent) {
     WinDragging.isDragging = true;
@@ -92,10 +50,52 @@ export class AppWinVM {
     return res;
   }
 
-  public layoutChanged(newSize: LayoutSize, wins: AppWinVM[]) {
+  public layoutChanged(newSize: LayoutSize) {
 
     this.responsiveClass = this.getRespClass(newSize);
 
   }
 
+
+  // public _win;
+
+  // @Input()
+  // set win(win: AppWinVM) {    
+  //   this._win = win;
+  // };
+
+   ngAfterViewInit(): void {
+
+  //   // var inst = 
+  //   //  this.loadComponent<TradingScreen>(TradingScreen);
+
+  //   // inst.data = "ala lalas";
+   }
+
+  // loadComponent<T>(t: Type<T> ) {
+
+  //   let factory = this._componentFactoryResolver.resolveComponentFactory(t);
+
+  //   // vCref is needed cause of that injector..
+  //   let injector = ReflectiveInjector.fromResolvedProviders([], this.content.parentInjector);
+
+  //   // create component without adding it directly to the DOM
+  //   let comp = factory.create(injector);
+
+  // // add inputs first !! otherwise component/template crashes ..
+  //   // var inst = <T>comp.instance;
+    
+  //   // inst["data"] = "this is a test";
+
+
+  //   // all inputs set? add it to the DOM ..
+  //   this.content.insert(comp.hostView);
+
+
+  //   // let componentRef = this.content.createComponent(componentFactory)
+   
+  //   //  return <T>inst;
+  // }
+
 }
+

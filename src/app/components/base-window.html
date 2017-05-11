@@ -3,14 +3,14 @@
 
 
 <div 
-  [id]="_win.id" 
+  [id]="id" 
   class="win-all" 
-  [ngClass]="_win.responsiveClass"
+  [ngClass]="responsiveClass"
   style="width: 600px; height: 300px;" 
-  [style.left.px]="_win.left" 
-  [style.top.px]="_win.top">  
+  [style.left.px]="left" 
+  [style.top.px]="top">  
   
-  <div class="bar" (mousedown)="_win.mouseDown($event)">{{_win.title}}</div>
+  <div class="bar" (mousedown)="mouseDown($event)">{{title}}</div>
   <div class="content">
     <div #content></div>
     

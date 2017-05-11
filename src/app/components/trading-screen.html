@@ -32,4 +32,22 @@
   </div>-->
 
 
-  <div class="test-thing">asdf</div>
+<div 
+  [id]="id" 
+  class="win-all" 
+  [ngClass]="responsiveClass"
+  style="width: 600px; height: 300px;" 
+  [style.left.px]="left" 
+  [style.top.px]="top">  
+  
+  <div class="bar" (mousedown)="mouseDown($event)">{{title}}</div>
+  <div class="content">
+    <!--<div #content></div>-->
+
+    <div class="test-thing" (click)="testClick()">{{data}}</div>
+
+  </div>
+</div>
+
+
+  

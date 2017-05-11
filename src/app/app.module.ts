@@ -8,6 +8,9 @@ import { MainMenu } from './components/main-menu.component';
 
 import { AppComponent } from './app.component';
 import { TradingScreen } from "app/components/trading-screen";
+import { AddDirective } from "app/directives/add.directive";
+import { TestComp } from "app/components/test-comp.component";
+
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { TradingScreen } from "app/components/trading-screen";
     AppComponent,
     AppWin,
     MainMenu,
-    TradingScreen
+    TradingScreen,
+    AddDirective,
+    TestComp,
+    
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,7 @@ import { TradingScreen } from "app/components/trading-screen";
   providers: [],
   bootstrap: [AppComponent],
   
-  entryComponents: [TradingScreen]
+  entryComponents: [TradingScreen, TestComp]
 })
 
 

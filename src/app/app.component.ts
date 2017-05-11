@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { AppWinVM } from "./components/base-window.component";
+// import { AppWinVM } from "./components/base-window.component";
 import _ from "lodash";
 
 import { WinDragging } from "./services/WinDragging"
 
-import { ViewEncapsulation, AfterViewInit, ComponentFactoryResolver, ViewContainerRef, Type } from '@angular/core';
+import { ViewEncapsulation, AfterViewInit, ComponentFactoryResolver, ViewContainerRef, Type, ViewChild, OnInit, ReflectiveInjector } from '@angular/core';
 
 import { $, LayoutSize } from './globals';
-import {TradingScreen} from "app/components/trading-screen";
+import { TradingScreen } from "app/components/trading-screen";
+import { TestComp } from "app/components/test-comp.component";
+import { AddDirective } from "app/directives/add.directive";
+import { WinCreationService } from "app/services/win-creation.service";
 
 
 @Component({
@@ -17,27 +20,30 @@ import {TradingScreen} from "app/components/trading-screen";
   host: {
     '(window:resize)': 'onResize($event)'
   },
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [WinCreationService]
 })
 
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  public wins: AppWinVM[];
+  // @ViewChild(AddDirective) windowTarget: AddDirective;
+  @ViewChild('content', { read: ViewContainerRef }) windowTarget: ViewContainerRef;
+
+  ngOnInit() {
+    this._winCreateService.windowTarget = this.windowTarget;    
+  }
 
   public responsiveClass = "";
   public menuOpenedClass = "";
 
-  constructor() { 
-    this.wins = [];
-    
-    this.addWin("TheFirst", "General news");
-    // this.addWin("TheSecond", "Window II.");
-    // this.addWin("TheThird", "Another Window in the hood");
 
+  constructor( private _winCreateService: WinCreationService, private _componentFactoryResolver: ComponentFactoryResolver) {
     this.resetResponsivity();
+
+    
   }
 
 
@@ -49,18 +55,6 @@ export class AppComponent {
     this.recognizeWidth();
 
     this.responsiveClass = this.currentSize === LayoutSize.Mobile ? "mobile-resp" : "web-resp";
-
-    //var $dash = $(".dash-panel");
-    // if (this.currentSize === LayoutSize.Mobile) {
-    //   $dash.addClass("hidden");
-    // } else {
-    //   $dash.removeClass("hidden");
-    // }
-
-
-    this.wins.forEach((w) => {
-      w.layoutChanged(this.currentSize, this.wins);
-    })
   }
 
   public currentSize?: LayoutSize;
@@ -73,7 +67,7 @@ export class AppComponent {
     var newSize: LayoutSize;
 
     if (window.innerWidth < this.mobileTreshold) {
-      newSize = LayoutSize.Mobile;      
+      newSize = LayoutSize.Mobile;
     } else {
       newSize = LayoutSize.Web;
     }
@@ -94,20 +88,6 @@ export class AppComponent {
     }
   }
 
-  public addWin(id: string, title: string) {
-
-    var win = new AppWinVM(id);
-    win.title = title;
-    win.left = 300;
-    win.top = 300;
-
-    win.responsiveClass = win.getRespClass(this.currentSize);
-
-    console.log("pushing");
-    this.wins.push(win);
-    console.log("pushed");
-
-  }
 
   public mouseMove(e) {
     if (WinDragging.isDragging) {
@@ -128,5 +108,7 @@ export class AppComponent {
 
 
 }
+
+
 
 

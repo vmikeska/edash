@@ -1,4 +1,5 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, Input } from '@angular/core';
+import { AppWin } from "app/components/base-window.component";
 
 
 @Component({
@@ -6,12 +7,19 @@ import { Component, Injector } from '@angular/core';
   templateUrl: './trading-screen.html',
 })
 
-export class TradingScreen {
+export class TradingScreen extends AppWin {
+
+  title = "test" + Math.random();
 
 
-  public data: string;
+  public testClick() {
+    alert("test");
+  }
 
- 
+  @Input()
+  public data;
+
+   public test = "dfasdfs";
 
 }
 
