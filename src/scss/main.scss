@@ -17,17 +17,6 @@ body {
     min-width: 480px;
 }
 
-.test-thing {
-
-
-    width: 200px;
-    height: 200px;
-
-    background-color: red;
-
-
-}
-
 .hidden {
     display: none;
 }
@@ -362,7 +351,7 @@ body {
 }
 
 .value-table {
-    $border-style:  1px solid $win-border;
+    $border-style: 1px solid $win-border;
 
     width: 100%;
     
@@ -371,6 +360,39 @@ body {
 
     th,td {
         padding: 6px;
+    }
+
+    th {
+        position: relative;
+
+        .filter-btn {
+            display: none;
+
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            padding: 8px;
+
+            cursor: pointer;
+            
+            .ico {
+                color: black;
+            }
+
+            &:hover {
+                .ico {
+                    color: $orange-dark;
+                }
+            }
+        }
+
+
+        &:hover {
+            .filter-btn {
+                display: inline-block;
+            }
+        }
     }
 
     tr {

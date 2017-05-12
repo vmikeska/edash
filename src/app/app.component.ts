@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 // import { AppWinVM } from "./components/base-window.component";
-import _ from "lodash";
 
 import { WinDragging } from "./services/WinDragging"
 
