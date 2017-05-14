@@ -10,6 +10,7 @@ import { TradingScreen } from "app/components/trading-screen";
 import { TestComp } from "app/components/test-comp.component";
 import { AddDirective } from "app/directives/add.directive";
 import { WinCreationService } from "app/services/win-creation.service";
+import { DynamicCreationService } from "app/services/dynamic-creation.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ import { WinCreationService } from "app/services/win-creation.service";
     '(window:resize)': 'onResize($event)'
   },
   encapsulation: ViewEncapsulation.None,
-  providers: [WinCreationService]
+  providers: [WinCreationService, DynamicCreationService]
 })
 
 
@@ -31,18 +32,21 @@ export class AppComponent implements OnInit {
   // @ViewChild(AddDirective) windowTarget: AddDirective;
   @ViewChild('content', { read: ViewContainerRef }) windowTarget: ViewContainerRef;
 
-  ngOnInit() {
-    this._winCreateService.windowTarget = this.windowTarget;    
-  }
-
   public responsiveClass = "";
   public menuOpenedClass = "";
+
+  public currentSize?: LayoutSize;
+
+  private mobileTreshold = 600;
+  private menuClosingClass = "closed";
 
 
   constructor( private _winCreateService: WinCreationService, private _componentFactoryResolver: ComponentFactoryResolver) {
     this.resetResponsivity();
+  }
 
-    
+  public ngOnInit() {
+    this._winCreateService.windowTarget = this.windowTarget;    
   }
 
 
@@ -50,16 +54,15 @@ export class AppComponent implements OnInit {
     this.resetResponsivity();
   }
 
-  private resetResponsivity() {
+  private resetResponsivity() {    
     this.recognizeWidth();
 
     this.responsiveClass = this.currentSize === LayoutSize.Mobile ? "mobile-resp" : "web-resp";
+
+    console.log(this.responsiveClass);
   }
 
-  public currentSize?: LayoutSize;
-
-  private mobileTreshold = 600;
-  private menuClosingClass = "closed";
+  
 
 
   private recognizeWidth() {

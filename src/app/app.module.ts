@@ -16,13 +16,16 @@ import { DataTable } from "app/components/data-table.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,    
+    MainMenu,    
+        
     AppWin,
-    MainMenu,
+    DataTable,
+
     TradingScreen,
+
     AddDirective,
     TestComp,
-    DataTable
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { DataTable } from "app/components/data-table.component";
   providers: [],
   bootstrap: [AppComponent],
   
-  entryComponents: [TradingScreen, TestComp, DataTable]
+  entryComponents: [TradingScreen, TestComp, DataTable, AppWin]
 })
 
 

@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { DelayedReturn } from "app/services/DelayedReturn";
 import { WinCreationService } from "app/services/win-creation.service";
 import { TradingScreen } from "app/components/trading-screen";
+import { TestComp } from "app/components/test-comp.component";
+import { AppWin } from "app/components/base-window.component";
 
 
 @Component({
@@ -16,7 +18,7 @@ export class MainMenu {
   public items: MenuItem[] = [
     {
       id: "news", ico: "icon-newspaper", text: "News", items: [
-        { id: "s1", text: "Marktbericht" }
+        { id: "MarketReport", text: "Marktbericht" }
       ]
     },
 
@@ -90,13 +92,20 @@ export class MainMenu {
     this.deactivateSecondMenu();
   }
 
-  private itemClicked(id) {
-    console.log(id);
+  private itemClicked(item: MenuSubItem) {
+    
+    let id = item.id;
+    let instances;
 
     if (id === "TradingScreen") {
-      var inst = this._winCreateService.createWinInstance<TradingScreen>(TradingScreen);
-      inst.title = "nazdar";
+      instances = this._winCreateService.createWinInstance<TradingScreen>(TradingScreen);            
     }
+
+    if (id === "MarketReport") {
+      instances = this._winCreateService.createWinInstance<TestComp>(TestComp);      
+    }
+
+    instances.winInstance.title = item.text;
 
     this.deactivateFirstMenu();
     this.deactivateSecondMenu();

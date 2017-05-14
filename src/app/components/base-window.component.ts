@@ -2,6 +2,8 @@ import { Component, Input, ComponentFactoryResolver, ViewContainerRef, AfterView
 import { WinDragging } from "../services/WinDragging"
 import { LayoutSize } from "app/globals";
 import { TradingScreen } from "app/components/trading-screen";
+import { WinCreationService } from "app/services/win-creation.service";
+import { TestComp } from "app/components/test-comp.component";
 
 
 @Component({
@@ -11,13 +13,11 @@ import { TradingScreen } from "app/components/trading-screen";
 
 export class AppWin implements AfterViewInit {
 
-  @ViewChild('content', { read: ViewContainerRef }) content;
-  
+  @ViewChild('content', { read: ViewContainerRef }) content: ViewContainerRef;
 
-  constructor(private _componentFactoryResolver: ComponentFactoryResolver, private _viewContainerRef: ViewContainerRef) {
+  constructor() {
 
   }
-
 
  public responsiveClass = this.getRespClass(LayoutSize.Web);
 
@@ -26,14 +26,11 @@ export class AppWin implements AfterViewInit {
   public left = 300;
   public top = 300;
 
-  // public leftBackup: number;
-  // public topBackup: number;
-
   public mouseDown(e: MouseEvent) {
     WinDragging.isDragging = true;
     WinDragging.dragMouseOffsetX = e.offsetX;
     WinDragging.dragMouseOffsetY = e.offsetY;
-    WinDragging.currentWin = this;
+     WinDragging.currentWin = this;
   }
 
   public getRespClass(size: LayoutSize) {
@@ -57,45 +54,14 @@ export class AppWin implements AfterViewInit {
   }
 
 
-  // public _win;
 
-  // @Input()
-  // set win(win: AppWinVM) {    
-  //   this._win = win;
-  // };
 
    ngAfterViewInit(): void {
 
-  //   // var inst = 
-  //   //  this.loadComponent<TradingScreen>(TradingScreen);
-
-  //   // inst.data = "ala lalas";
+  
    }
 
-  // loadComponent<T>(t: Type<T> ) {
-
-  //   let factory = this._componentFactoryResolver.resolveComponentFactory(t);
-
-  //   // vCref is needed cause of that injector..
-  //   let injector = ReflectiveInjector.fromResolvedProviders([], this.content.parentInjector);
-
-  //   // create component without adding it directly to the DOM
-  //   let comp = factory.create(injector);
-
-  // // add inputs first !! otherwise component/template crashes ..
-  //   // var inst = <T>comp.instance;
-    
-  //   // inst["data"] = "this is a test";
-
-
-  //   // all inputs set? add it to the DOM ..
-  //   this.content.insert(comp.hostView);
-
-
-  //   // let componentRef = this.content.createComponent(componentFactory)
-   
-  //   //  return <T>inst;
-  // }
+ 
 
 }
 

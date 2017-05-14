@@ -1,21 +1,6 @@
-<div 
-  [id]="id" 
-  class="win-all" 
-  [ngClass]="responsiveClass"
-  style="width: 600px; height: 300px;" 
-  [style.left.px]="left" 
-  [style.top.px]="top">  
-  
-  <div class="bar" (mousedown)="mouseDown($event)">{{title}}</div>
-  <div class="content">
-    
 
     <!--<list-box [items]="tradePartners"></list-box>-->
 
     <data-table [headers]="headers" [data]="data"></data-table>
-
-  </div>
-</div>
-
 
   

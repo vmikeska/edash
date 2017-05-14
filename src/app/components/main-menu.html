@@ -26,7 +26,7 @@
           <span class="close icon-times" (click)="closeClick()"></span>
         </div>
 
-        <div class="item-all" *ngFor="let si of selectedSubItems" (click)="itemClicked(si.id)">
+        <div class="item-all" *ngFor="let si of selectedSubItems" (click)="itemClicked(si)">
           <div class="item" data-id="{{si.id}}">{{si.text}}</div>
         </div>
       

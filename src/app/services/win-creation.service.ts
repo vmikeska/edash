@@ -1,69 +1,32 @@
 
 import { Injectable, ComponentFactoryResolver, ReflectiveInjector, Type, ViewContainerRef } from '@angular/core';
+import { DynamicCreationService } from "app/services/dynamic-creation.service";
+import { AppWin } from "app/components/base-window.component";
 
 @Injectable()
 export class WinCreationService {
 
     public windowTarget: ViewContainerRef;
 
-    constructor(private _componentFactoryResolver: ComponentFactoryResolver) {
-        
+    constructor(private _creationService: DynamicCreationService) {
+
     }
 
-    public createWinInstance<T>(t: Type<T>) {
+    public createWinInstance<T>(t: Type<T>): WinInstances<T> {
 
-        let factory = this._componentFactoryResolver.resolveComponentFactory(t);
+        let winInstance = this._creationService.createInstance<AppWin>(AppWin, this.windowTarget);
+        
+        let contentInstance = this._creationService.createInstance(t, winInstance.content);
 
-        // vCref is needed cause of that injector..
-        let injector = ReflectiveInjector.fromResolvedProviders([], this.windowTarget.parentInjector);
-
-        // create component without adding it directly to the DOM
-        let comp = factory.create(injector);
-
-        var inst = <T>comp.instance;
-
-        //add inputs first !! otherwise component/template crashes ..
-        // inst["data"] = "this is a test";
-
-        // all inputs set? add it to the DOM ..
-        this.windowTarget.insert(comp.hostView);
-
-        return <T>inst;
+        return {
+             winInstance: winInstance,
+             contentInstance: contentInstance
+        };
     }
 
 }
 
- // private createWinInstance<T>(t): T {
-
-  //     let componentFactory = this._componentFactoryResolver.resolveComponentFactory(t);
-
-  //      let viewContainerRef = this.windowTarget.viewContainerRef;
-
-  //     viewContainerRef.clear();
-
-  //     let componentRef = viewContainerRef.createComponent(componentFactory);
-
-  //      var ins = <T>componentRef.instance;
-  //      return ins;     
-  //   }
-
-  // public createWinInstance<T>(t: Type<T>) {
-
-  //   let factory = this._componentFactoryResolver.resolveComponentFactory(t);
-
-  //   // vCref is needed cause of that injector..
-  //   let injector = ReflectiveInjector.fromResolvedProviders([], this.windowTarget.parentInjector);
-
-  //   // create component without adding it directly to the DOM
-  //   let comp = factory.create(injector);
-
-  //   var inst = <T>comp.instance;
-
-  //   //add inputs first !! otherwise component/template crashes ..
-  //   // inst["data"] = "this is a test";
-
-  //   // all inputs set? add it to the DOM ..
-  //   this.windowTarget.insert(comp.hostView);
-
-  //   return <T>inst;
-  // }
+export class WinInstances<T> {
+    public winInstance: AppWin;
+    public contentInstance: T;
+}

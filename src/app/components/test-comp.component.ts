@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 
 export class TestComp {
   @Input()
-  public data: any;
+  public data = "nazdar";
 }
 
 

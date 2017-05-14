@@ -9,20 +9,17 @@ import { ListBoxItem } from "app/components/list-box.component";
   templateUrl: './trading-screen.html',
 })
 
-export class TradingScreen extends AppWin implements OnInit {
+export class TradingScreen implements OnInit {
   
-  ngOnInit(): void {
-    
-    
-      this.data.push({items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]});
-      this.data.push({items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]});
-      this.data.push({items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]});
-      this.data.push({items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]});
-    
-    
+  public ngOnInit(): void {    
+      
   }
 
-  public headers: DataTableHeaderItem[] = [{col: "TheCol", name: "The col"}, {col: "AnotherCol", name: "Another Col"}, {col: "SuperCol", name: "Super col"}];
+  public headers: DataTableHeaderItem[] = [
+    {col: "TheCol", name: "The col"}, 
+    {col: "AnotherCol", name: "Another Col"}, 
+    {col: "SuperCol", name: "Super col"}
+    ];
 
   public data: DataTableRow[] = [
     {items: [{ col: "SuperCol", value: "super col value 1"}, { col: "TheCol", value: "val1"}, {col: "AnotherCol", value: "val2"}]},
