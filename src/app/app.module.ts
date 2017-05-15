@@ -11,6 +11,7 @@ import { TradingScreen } from "app/components/trading-screen";
 import { AddDirective } from "app/directives/add.directive";
 import { TestComp } from "app/components/test-comp.component";
 import { DataTable } from "app/components/data-table.component";
+import { ListBox } from "app/components/list-box.component";
 
 
 
@@ -21,11 +22,13 @@ import { DataTable } from "app/components/data-table.component";
         
     AppWin,
     DataTable,
+    ListBox,
 
     TradingScreen,
 
     AddDirective,
     TestComp,
+    
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { DataTable } from "app/components/data-table.component";
   providers: [],
   bootstrap: [AppComponent],
   
-  entryComponents: [TradingScreen, TestComp, DataTable, AppWin]
+  entryComponents: [TradingScreen, TestComp, DataTable, AppWin, ListBox]
 })
 
 

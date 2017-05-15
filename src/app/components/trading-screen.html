@@ -1,6 +1,11 @@
 
-    <!--<list-box [items]="tradePartners"></list-box>-->
+    
+    
+    <list-box [items]="tradePartners" 
+    (selectedItemChange)="test($event)"
+    ></list-box>
 
     <data-table [headers]="headers" [data]="data"></data-table>
 
-  
+
+  <div *ngIf="selected">selected: {{selected.text}}</div>

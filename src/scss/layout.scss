@@ -1,0 +1,21 @@
+@import "main";
+
+.bck {
+    background: url(~/assets/imgs/background.jpg) no-repeat;
+
+    width: 2600px;
+    height: 1736px;
+
+    @include centerer();
+
+
+}
+
+.windows {
+
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}

@@ -1,0 +1,30 @@
+@import "main";
+
+.list-box {
+    border: 1px solid $win-border;
+    padding: 1px;
+    display: inline-block;
+
+    &:focus {
+        outline: none;
+        border: 1px solid black;
+    }
+
+    .item {
+        cursor: pointer;
+        padding: 0.5em;
+        
+        background-color: $win-bck;
+
+        &:hover {
+            background-color: $win-border;
+            color: white;
+        }
+
+        &.active {
+            background-color: $orange-dark;                        
+            color: white;
+        }
+
+    }
+}

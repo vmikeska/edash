@@ -1,4 +1,4 @@
-import { Component, Input, ComponentFactoryResolver, ViewContainerRef, AfterViewInit, Type, ViewChild, ReflectiveInjector } from '@angular/core';
+import { Component, Input, ComponentFactoryResolver, ViewContainerRef, AfterViewInit, Type, ViewChild, ReflectiveInjector, ViewEncapsulation } from '@angular/core';
 import { WinDragging } from "../services/WinDragging"
 import { LayoutSize } from "app/globals";
 import { TradingScreen } from "app/components/trading-screen";
@@ -8,7 +8,8 @@ import { TestComp } from "app/components/test-comp.component";
 
 @Component({
   selector: 'app-win',
-  templateUrl: './base-window.html',
+  templateUrl: './base-window.html',  
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class AppWin implements AfterViewInit {
@@ -19,49 +20,49 @@ export class AppWin implements AfterViewInit {
 
   }
 
- public responsiveClass = this.getRespClass(LayoutSize.Web);
+  //  public responsiveClass = this.getRespClass(LayoutSize.Web);
 
   public id: string;
   public title: string;
-  public left = 300;
+  public left = 500;
   public top = 300;
 
   public mouseDown(e: MouseEvent) {
     WinDragging.isDragging = true;
     WinDragging.dragMouseOffsetX = e.offsetX;
     WinDragging.dragMouseOffsetY = e.offsetY;
-     WinDragging.currentWin = this;
+    WinDragging.currentWin = this;
   }
 
-  public getRespClass(size: LayoutSize) {
-    var res = "";
+  // public getRespClass(size: LayoutSize) {
+  //   var res = "";
 
-    if (size === LayoutSize.Web) {
-      res = "win-dynamic";
-    }
+  //   if (size === LayoutSize.Web) {
+  //     res = "win-dynamic";
+  //   }
 
-    if (size === LayoutSize.Mobile) {
-      res = "win-static";
-    }
+  //   if (size === LayoutSize.Mobile) {
+  //     res = "win-static";
+  //   }
 
-    return res;
-  }
+  //   return res;
+  // }
 
   public layoutChanged(newSize: LayoutSize) {
 
-    this.responsiveClass = this.getRespClass(newSize);
+    // this.responsiveClass = this.getRespClass(newSize);
 
   }
 
 
 
 
-   ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
 
-  
-   }
 
- 
+  }
+
+
 
 }
 

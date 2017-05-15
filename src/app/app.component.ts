@@ -16,7 +16,16 @@ import { DynamicCreationService } from "app/services/dynamic-creation.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ["../scss/main.scss"],
+
+  styleUrls: [
+    "../scss/main.scss",
+    "../scss/base-window.scss",
+    "../scss/dashboard.scss",
+    "../scss/data-table.scss",
+    "../scss/layout.scss",
+    "../scss/list-box.scss",
+    ],
+
   host: {
     '(window:resize)': 'onResize($event)'
   },

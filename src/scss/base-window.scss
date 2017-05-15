@@ -1,0 +1,45 @@
+@import "main";
+
+
+.win-all {    
+    display: inline-block;
+
+    background-color:$win-bck;
+
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+
+    .bar{
+        background-color: $win-bar;
+        padding: 4px;     
+    }
+
+    .content {
+        position: relative;
+    }
+}
+
+
+.mobile-resp {
+
+    .win-all {
+        margin-bottom: 8px;
+        width: 100% !important;
+    }
+
+}
+
+.web-resp {
+
+    .win-all {
+
+        position: absolute;
+
+        .bar{        
+            cursor: move;
+        }
+
+    }
+
+}
+
+

@@ -1,0 +1,84 @@
+@import "main";
+
+.table-wrap {
+    padding: 0.5em;
+}
+
+.value-table {
+    $border-style: 1px solid $win-border;
+
+    width: 100%;
+    
+    border: none;
+    font-size: 0.8em;
+
+    th,td {
+        padding: 6px;
+    }
+
+    th {
+        position: relative;
+
+        .filter-btn {
+            display: none;
+
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            padding: 8px;
+
+            cursor: pointer;
+            
+            .ico {
+                color: black;
+            }
+
+            &:hover {
+                .ico {
+                    color: $orange-dark;
+                }
+            }
+        }
+
+
+        &:hover {
+            .filter-btn {
+                display: inline-block;
+            }
+        }
+    }
+
+    tr {
+        background-color: white;
+
+        &:first-of-type {
+            background-color: $win-bar;
+
+            th,td {
+                border-top: $border-style;
+            }
+        }
+
+        &:nth-child(even) {
+            background-color: $win-bck;
+        }
+    }
+
+    
+    td,th {
+        border-right: $border-style;
+        border-bottom: $border-style;
+
+        &:first-of-type{
+            border-left: $border-style;            
+        }
+    }
+
+    .data-row:hover {
+        background-color: darkgray;
+        color: white;
+    }
+
+
+}

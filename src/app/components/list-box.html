@@ -1,7 +1,25 @@
 
 
-<div class="list-box">
 
-  <div *ngFor="let i of items" class="item" [attr.data-val]="{{i.value}}">{{i.text}}</div>
+<div 
+  class="list-box" 
+  (click)="boxClicked()" 
+  (keydown)="keyDown($event)" 
+  tabindex="0"   
+  >
+
+
+
+  <div 
+    *ngFor="let i of _items" 
+    class="item" 
+    [ngClass]="{'active': i.isActive}"
+    [attr.data-val]="i.value" 
+    (click)="itemClicked(i)"
+    
+
+    >
+      {{i.text}}
+    </div>
 
 </div>

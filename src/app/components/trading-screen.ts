@@ -11,6 +11,12 @@ import { ListBoxItem } from "app/components/list-box.component";
 
 export class TradingScreen implements OnInit {
   
+public selected: ListBoxItem;
+
+  public test(item: ListBoxItem) {
+    this.selected = item;
+  }
+
   public ngOnInit(): void {    
       
   }
@@ -31,6 +37,8 @@ export class TradingScreen implements OnInit {
   public tradePartners: ListBoxItem[] = [
     {text: "Gas-Union", value: 1},
     {text: "Gazprom", value: 2},
+    {text: "CEZ", value: 3},
+    {text: "Naftogaz", value: 4},
   ];
 
   

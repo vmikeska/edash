@@ -1,0 +1,220 @@
+@import "main";
+
+.dash-all {
+    z-index: 999999;
+
+    background-color: #dddddd;
+
+    .dash-panel {                
+        background-color: $win-bck;
+    }
+
+    .date-all {
+        background-color: #777777;
+
+        .date,.time {
+            display: inline-block;
+            color: white;
+            font-size: 1.4em;
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+
+    $menu-background: #999999;
+
+    .dash-menu {        
+        font-size: 0.9em;
+
+        background-color: $menu-background;
+        color: white;
+
+        border-top: 1px solid $menu-background;
+
+        .layout-tbl {
+            display: table;
+            width: 100%;
+
+            .first-items {
+                display: table-cell;                
+                text-align: left;
+
+                width: 50%;
+
+                .item-all {            
+                    padding: 5px;
+                    
+
+                    cursor: pointer;
+
+                    .ico-cell {
+                        width: 1.4em;
+                    }
+
+                    .ico {
+                        display: inline-block;
+                        vertical-align: middle;
+                        
+                        padding-top: 3px;
+                    }
+
+                    .txt {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    &.active, &:hover {                        
+                        background-color: #777777;
+                    }
+                }
+
+            }
+
+            .second-items {
+                display: table-cell;
+                text-align: left;
+                
+                width: 50%;
+
+                .top {
+                    text-align: right;
+                    padding: 6px;
+
+                    .close {
+                        color: $menu-background;                        
+                        cursor: pointer;
+
+                        font-size: 1.2em;
+
+                         display: inline-block;
+                        
+                        &:hover {
+                            color: $red1;
+                        }
+                    }
+                }
+
+                &.any-items {
+                    background-color: #777777;
+                }
+
+                .item-all {
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    cursor: pointer;
+                    
+                    .item {                        
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        padding-left: 2px;
+
+                        &:hover {
+                            background-color:  $menu-background;
+                        }
+                        
+                    }
+                }
+                
+            }
+        }
+
+        
+    }
+
+}
+
+.mobile-btn-bck {        
+    background-color: darkgray;
+    color: white;
+    padding: 10px;
+
+    margin-bottom: 8px;
+
+    z-index: 9999999;
+
+    .ico {
+        font-size: 40px;
+        cursor: pointer;
+
+        &:hover {
+            color: $orange-dark;
+        }
+    }
+}
+
+.mobile-resp {
+
+    .dash-all {
+
+        position: fixed;
+        top: 40px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .dash-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            .srv {
+                position: relative;
+                height: 40px;
+                
+                .close {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+
+                    cursor: pointer;
+
+                    font-size: 30px;
+                    color: darkred;
+
+                    &:hover {
+                        color: orange;
+                    }
+                }
+            }
+
+            .content {
+
+            }
+
+        }
+
+        &.closed {
+            display: none;
+        }
+    }
+
+}
+
+.web-resp {
+
+    .mobile-btn-bck {
+        display: none;
+    }
+
+    .dash-all {
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 340px;
+        height: 700px;
+
+        .dash-panel {
+
+            .srv {
+                display: none;
+            }
+        }
+
+    }
+
+}
