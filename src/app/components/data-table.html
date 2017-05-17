@@ -1,46 +1,44 @@
-
-
 <div class="table-wrap">
 
-    <table cellspacing="0" cellpadding="0" class="value-table">
+  <table cellspacing="0" cellpadding="0" class="value-table">
 
-        <tr class="header">
+    <tr class="header">
 
-            <ng-container *ngFor="let h of headers">
-              <th>
-                <span class="name">{{h.name}}</span>
-                <span class="filter-btn" (click)="filterBtnClick(h)" [title]="filteredAsc ? 'order asc': 'order desc'">
+      <ng-container *ngFor="let h of headers">
+        <th>
+          <span class="name">{{h.name}}</span>
+          <span class="filter-btn" (click)="filterBtnClick(h)" [title]="filteredAsc ? 'order asc': 'order desc'">
                   <span class="ico " [ngClass]="(filteredAsc) && h === filteredColumn ? 'icon-chevron-up' : 'icon-chevron-down'"></span>
-                </span>
-              </th>
-            </ng-container>
+          </span>
+        </th>
+      </ng-container>
 
 
-          </tr>
+    </tr>
 
-          <tr class="data-row" *ngFor="let row of viewData">
-            
-            <td *ngFor="let col of row.items">{{col.value}}</td>
-            
-            
-          </tr>
+    <tr class="data-row" *ngFor="let row of viewData">
 
-          
+      <td *ngFor="let col of row.items" [innerHTML]="col.disVal">
+        
+      </td>
 
-          <tr>
-            <td [attr.colspan]="headers.length">
-              
-              <div class="service-area">
-
-                Here is gonna be the service stuff
-
-              </div>
-
-            </td>
-          </tr>
+    </tr>
 
 
-        </table>
 
-  </div>
+    <tr>
+      <td [attr.colspan]="headers.length">
 
+        <div class="service-area">
+
+          Here is gonna be the service stuff
+
+        </div>
+
+      </td>
+    </tr>
+
+
+  </table>
+
+</div>

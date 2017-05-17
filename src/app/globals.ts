@@ -1,6 +1,7 @@
 
 
 export enum LayoutSize { Mobile, Web }
+export enum OS { A, WP, IOS, Other }
 
 export function $(selector: string): MyDomOperations {
     // if (selector.startsWith("#")) {

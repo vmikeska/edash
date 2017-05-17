@@ -1,10 +1,11 @@
-import { Component, Injector, Input, OnChanges, SimpleChanges, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, Injector, Input, OnChanges, SimpleChanges, ElementRef, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import * as _ from "lodash";
 
 
 @Component({
   selector: 'list-box',
   templateUrl: './list-box.html',
+  //encapsulation: ViewEncapsulation.None,
 })
 
 export class ListBox {

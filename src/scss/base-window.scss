@@ -1,5 +1,12 @@
 @import "main";
 
+$win-bck: $c-light-gray;
+
+$win-bar-bck: $c-blue;
+$win-bar-color: white;
+
+$win-border: $c-vdark-gray;
+
 
 .win-all {    
     display: inline-block;
@@ -9,8 +16,23 @@
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
 
     .bar{
-        background-color: $win-bar;
-        padding: 4px;     
+        position: relative;
+        background-color: $win-bar-bck;
+        color: $win-bar-color;
+        padding: 4px; 
+
+        .win-close {
+            color: $win-border;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+
+            cursor: pointer;
+
+            &:hover {
+                color: red;
+            }
+        }    
     }
 
     .content {

@@ -9,7 +9,11 @@
   [style.left.px]="left" 
   [style.top.px]="top">  
   
-  <div class="bar" (mousedown)="mouseDown($event)">{{title}}</div>
+  <div class="bar" (mousedown)="mouseDown($event)">
+    {{title}}
+
+      <span class="win-close icon-times" (click)="close()"></span>
+    </div>
   <div class="content">
     <div #content></div>
     

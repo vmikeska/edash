@@ -1,9 +1,25 @@
 
+// http://www.colourlovers.com/palette/148712/Gamebookers
+$c-dark-orange: #FF9900;
+
+$c-vdark-gray: #424242;
+$c-dark-gray: #5c5c5c;
+$c-gray: #BCBCBC;
+$c-light-gray: #E9E9E9;
+
+$c-blue: #3299BB;
+
+$c-green: #60B99A;
+
+
+
 $win-bck: #EFEFEF;
 $win-bar: #e4e5e5;
 $win-border: #cacaca;
 
 $red1: 	#ff0000;
+
+
 
 $focus1: darkgray;
 
@@ -33,14 +49,44 @@ body {
     cursor: pointer
 }
 
-.focus-orange {
-    background-color: $orange-dark;
+.focus-green {
+    background-color: $c-vdark-gray;
     color: white;
 
     &:hover {
-        background-color: $orange-light;
+        background-color: $c-green;
     }
 }
+
+.control-wrap {
+    display: inline-block;
+    vertical-align: top;
+
+    .title {
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+}
+
+.control-wrap-row {    
+    vertical-align: top;
+
+    .title {
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+}
+
+.column-wrap {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.no-decoration {
+    text-decoration: none;
+}
+
+
 
 .tbl {
     display: table;
@@ -73,6 +119,13 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@mixin noselect() {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }
 
 

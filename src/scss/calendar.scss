@@ -1,0 +1,199 @@
+
+@import "main";
+
+$input-color: interit;
+$input-bck: white;
+
+$input-color-hover: white;
+$input-bck-hover: $c-green;
+
+
+$arrow-color: $c-vdark-gray;
+$arrow-hover-color: $c-green;
+$cal-margin: none;
+$ico-color: gray;
+$close-color: gray;
+$weekend-color: $c-gray;
+$old-color: lightgray;
+$day-hover-active: $c-green;
+$cal-win-border:$cal-margin;
+$days-border: gray;
+
+
+
+.cal-wrap {
+    display: inline-block;
+    position: relative;
+
+    .icon-calendar {
+        font-size: 1em;
+        position: absolute;
+        left: 0.3em;
+        top: 0.6em;
+        color: $ico-color;
+    }
+
+    
+}
+
+.calendar-cont {
+    position: relative;
+    display: inline-block;
+    border: 1px solid $cal-margin !important;
+    
+
+    text-align: center;
+
+     .move-month {
+         display: inline-block;
+
+         font-size: 1.2em;
+         
+         color: $arrow-color;
+
+         cursor: pointer;         
+         
+         &:hover {
+             color: $arrow-hover-color;
+         }
+     }
+
+     .calendar-input {
+        display: inline-block;
+
+        border: 0;
+        border-radius: 0;
+
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+
+        font-size: 1em;
+        width: 140px;
+        padding-left: 28px;        
+
+        background-color: $input-bck;
+        color: $input-color;
+
+        &:hover {
+            background-color: $input-bck-hover;
+            color: $input-color-hover;
+
+        }
+     }
+
+    .my-calendar-win {
+        position: absolute;
+        left: 0;
+        top: 45px;
+        font-size: 0.9em;
+
+        min-width: 240px;
+
+        background-color: white;
+
+        z-index: 99999999;
+
+        border: 1px solid $cal-win-border;
+
+        display: inline-block;
+        padding: 8px;
+
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow:    0px 0px 14px 0px rgba(50, 50, 50, 0.75);
+        box-shadow:         0px 0px 14px 0px rgba(50, 50, 50, 0.75);        
+
+        .months {
+            display: table;
+            @include noselect;
+
+            width: 100%;
+
+            font-weight: bold;
+        
+            .l-arr {
+                display: table-cell;
+            }
+        
+            .date-txt {                
+                display: table-cell;                
+            }
+
+            .r-arr {
+                display: table-cell;
+            }
+        }
+
+        .day {
+            width: 35px;
+        }
+
+        .days-title {
+            display: table;
+            font-weight: bold;
+
+            margin-top: 12px;
+            margin-bottom: 8px;
+
+            padding-bottom: 8px;
+
+            border-bottom: 1px solid $days-border;
+
+            .day {
+                display: table-cell;            
+            }
+
+            .weekend{
+                color: $weekend-color;
+            }
+        }
+
+        .week-row {
+            display: table;
+        
+            margin-bottom: 8px;
+
+            .day {
+                display: table-cell;
+
+                &.weekend {
+                    color: $weekend-color;
+                }
+            
+                &.old {
+                    color: $old-color;
+                }
+
+                &.active {                    
+                    background-color: $day-hover-active;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+
+            .selectable:hover {                    
+                    color: white;
+                    background-color: $day-hover-active;
+                    cursor: pointer;
+                }
+        }
+
+        .top-bar {            
+            
+            text-align: right;
+            padding-right: 0.5em;
+
+            .close-cal {
+                display: inline-block;
+                cursor: pointer;
+                color: $close-color;
+                font-size: 1.2em;
+                
+                &:hover {
+                    color: $red1;
+
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,42 @@
+
+    
+    
+ <div class="portfolio-news">
+   
+    <tabs [items]="tabs"></tabs>
+
+    <div class="tabs-content" id="ponPeriod">
+      
+      <div class="control-wrap">
+        <div class="title">Lieferperiode</div>
+        <list-box [items]="periods"></list-box>
+      </div>
+
+      <div class="control-wrap">
+        <div class="title">Handelspartner</div>
+        <list-box [items]="partners"></list-box>
+      </div>
+
+      <div class="column-wrap">
+
+        <div class="control-wrap-row">
+          <div class="title">Von</div>
+          <calendar></calendar>
+        </div>
+
+        <div class="control-wrap-row">
+          <div class="title">Bis</div>
+          <calendar></calendar>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <div class="tabs-content" id="ponExport">
+        ponExport
+    </div>
+
+
+
+ </div>

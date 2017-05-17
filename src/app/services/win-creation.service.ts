@@ -14,13 +14,15 @@ export class WinCreationService {
 
     public createWinInstance<T>(t: Type<T>): WinInstances<T> {
 
-        let winInstance = this._creationService.createInstance<AppWin>(AppWin, this.windowTarget);
+        let winComponentRef = this._creationService.createInstance<AppWin>(AppWin, this.windowTarget);
         
-        let contentInstance = this._creationService.createInstance(t, winInstance.content);
+        winComponentRef.instance.componentRef = winComponentRef;
+
+        let contentComponentRef = this._creationService.createInstance(t, winComponentRef.instance.content);
 
         return {
-             winInstance: winInstance,
-             contentInstance: contentInstance
+             winInstance: winComponentRef.instance,
+             contentInstance: contentComponentRef.instance
         };
     }
 

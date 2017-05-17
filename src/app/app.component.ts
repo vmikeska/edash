@@ -6,7 +6,7 @@ import { WinDragging } from "./services/WinDragging"
 import { ViewEncapsulation, AfterViewInit, ComponentFactoryResolver, ViewContainerRef, Type, ViewChild, OnInit, ReflectiveInjector } from '@angular/core';
 
 import { $, LayoutSize } from './globals';
-import { TradingScreen } from "app/components/trading-screen";
+import { TradingScreenComponent } from "app/winComponents/trading-screen.component";
 import { TestComp } from "app/components/test-comp.component";
 import { AddDirective } from "app/directives/add.directive";
 import { WinCreationService } from "app/services/win-creation.service";
@@ -24,6 +24,9 @@ import { DynamicCreationService } from "app/services/dynamic-creation.service";
     "../scss/data-table.scss",
     "../scss/layout.scss",
     "../scss/list-box.scss",
+    "../scss/other.scss",
+    "../scss/tabs.scss",
+    "../scss/calendar.scss",
     ],
 
   host: {

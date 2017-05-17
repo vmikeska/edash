@@ -1,28 +1,44 @@
 @import "main";
 
+$border-inactive-color: none;
+$bck-inactive-color: white;
+
+$border-active-color: none;
+$bck-active-color: white;
+
+$item-hover: $c-green;// $c-blue;
+$item-active: $c-dark-orange;
+
+
 .list-box {
-    border: 1px solid $win-border;
+    border: 1px solid $border-inactive-color;
+    background-color: $bck-inactive-color;
+
     padding: 1px;
     display: inline-block;
 
+    font-size: 0.9em;
+
+    min-height: 6em;
+
     &:focus {
         outline: none;
-        border: 1px solid black;
+
+        border: 1px solid $border-active-color;
+        background-color: $bck-active-color;
     }
 
     .item {
         cursor: pointer;
         padding: 0.5em;
         
-        background-color: $win-bck;
-
         &:hover {
-            background-color: $win-border;
+            background-color: $item-hover;
             color: white;
         }
 
         &.active {
-            background-color: $orange-dark;                        
+            background-color: $item-active;                        
             color: white;
         }
 

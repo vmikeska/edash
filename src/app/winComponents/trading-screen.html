@@ -1,0 +1,46 @@
+<tabs [items]="tabs">
+
+
+</tabs>
+
+
+<div class="tabs-content" id="hsFilterNew">
+
+
+  <div class="control-wrap">
+    <div class="title">Handelspartner</div>
+    <list-box [items]="tradePartners" (selectedItemChange)="test($event)"></list-box>
+  </div>
+
+  <div class="control-wrap">
+    <div class="title">VHP</div>
+    <list-box [items]="vhps"></list-box>
+  </div>
+
+  <div class="control-wrap">
+    <div class="title">Produkte</div>
+    <list-box [items]="products"></list-box>
+  </div>
+
+  <div class="control-wrap">
+    <span class="lbtn focus-green">Hinzufügen</span>
+  </div>
+
+  <div *ngIf="selected">selected: {{selected.text}}</div>
+
+</div>
+
+<div class="tabs-content" id="hsSelect">
+hsSelect
+</div>
+
+<div class="tabs-content" id="hsConfig">
+hsConfig
+</div>
+
+<div class="tabs-content" id="hsUnits">
+hsUnits
+</div>
+
+
+<data-table [headers]="headers" [data]="data"></data-table>

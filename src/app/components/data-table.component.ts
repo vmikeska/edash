@@ -1,6 +1,13 @@
 import { Component, Injector, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as _ from "lodash";
+import * as moment from 'moment';
 
+
+export enum DataColumnType {
+  TypeString,
+  TypeHtml,
+  TypeDate
+}
 
 @Component({
   selector: 'data-table',
@@ -17,28 +24,30 @@ export class DataTable {
 
   @Input()
   public set data(d: DataTableRow[]) {
-    this.origDatadata = d;
+    this.origData = d;
 
-    this.viewData = this.orderColumnsByHeader(this.origDatadata);
+    this.viewData = this.orderColumnsByHeader(this.origData);
   }
 
   public viewData: DataTableRow[];
-  private origDatadata: DataTableRow[];
+  private origData: DataTableRow[];
 
 
-  private orderColumnsByHeader(inRows) {
+  private orderColumnsByHeader(inRows: DataTableRow[]) {
     let outRows = [];
 
-    
     inRows.forEach((oldRow) => {
 
       let outRow: DataTableRow = { items: [], origRowNo: outRows.length };
 
       this.headers.forEach((h) => {
-        let cell = _.find(oldRow.items, { col: h.col });
+        let cell: DataTableColumnItem = _.find(oldRow.items, { col: h.col });
         //todo: possibly should create empty cell in this case, could cause bugs when orderByColumn
         if (cell) {
-          outRow.items.push(<DataTableColumnItem>cell);
+
+          cell.disVal = this.convertDisVal(cell.value, h.type, h.typeArgs);
+
+          outRow.items.push(cell);
         }
       });
 
@@ -48,12 +57,31 @@ export class DataTable {
     return outRows;
   }
 
+  private convertDisVal(val: any, type: DataColumnType, typeArgs: string) {
+
+    var outVal = val.toString();
+
+    if (type === DataColumnType.TypeString) {
+        //nothing
+    }
+
+    if (type === DataColumnType.TypeHtml) {
+      //nothing
+    }
+
+    if (type === DataColumnType.TypeDate) {      
+       outVal = moment(val).format(typeArgs);
+    }
+
+    return outVal;
+  }
+
   private orderByColumn(asc: boolean, h: DataTableHeaderItem) {
 
-    var temps : SortingCell[] = [];
+    var temps: SortingCell[] = [];
 
     this.viewData.forEach((row) => {
-      let cell = _.find(row.items, {col: h.col});
+      let cell = _.find(row.items, { col: h.col });
 
       let temp: SortingCell = {
         value: cell.value,
@@ -70,7 +98,7 @@ export class DataTable {
 
     var sortedRows = [];
     sortedTemps.forEach((t) => {
-      var r = _.find(this.viewData, {origRowNo: t.rowNo});
+      var r = _.find(this.viewData, { origRowNo: t.rowNo });
       sortedRows.push(r);
     })
     this.viewData = sortedRows;
@@ -84,7 +112,7 @@ export class DataTable {
     }
 
     this.filteredColumn = h;
-    
+
     if (this.filteredAsc !== null) {
       this.filteredAsc = !this.filteredAsc
     } else {
@@ -92,9 +120,9 @@ export class DataTable {
     }
 
     this.orderByColumn(this.filteredAsc, this.filteredColumn);
-    
-  } 
-  
+
+  }
+
 }
 
 class SortingCell {
@@ -105,6 +133,8 @@ class SortingCell {
 export class DataTableHeaderItem {
   public name: string;
   public col: string;
+  public type?= DataColumnType.TypeString;
+  public typeArgs?: string;
 }
 
 export class DataTableRow {
@@ -113,7 +143,8 @@ export class DataTableRow {
 }
 
 export class DataTableColumnItem {
-  public value: string;
-  public col: string;
+  public disVal?: string;
+  public value: any;
+  public col: string;  
 }
 

@@ -1,0 +1,35 @@
+<div class="cal-wrap">
+
+    <div class="calendar-cont">
+        <input *ngIf="isNative" class="calendar-input" type="date" id="{{id}}" (change)="nativeChange($event)" />
+
+        <input *ngIf="!isNative" class="calendar-input" readonly type="text" id="{{id}}" (focusin)="standardFocusin($event)" [value]="dispValueDate" />
+
+        <span class="icon-calendar"></span>
+
+        <div *ngIf="opened" class="my-calendar-win">
+
+            <div class="top-bar">
+                <span class="icon-times close-cal" (click)="closeClicked()"></span>
+            </div>
+            <div class="months">
+                <div class="l-arr" (click)="prevClicked()">
+                    <span class="prev move-month icon-arrow-circle-left"></span>
+                </div>
+                <div class="date-txt">{{calDate}}</div>
+                <div class="r-arr" (click)="nextClicked()">
+                    <span class="next move-month icon-arrow-circle-right"></span>
+                    </div>
+            </div>            
+            <div class="days-title">
+                <div *ngFor="let td of titleDays" class="day" [ngClass]="{'weekend': td.weekend}">{{td.text}}</div>
+            </div>
+
+            <div class="week-row" *ngFor="let week of weeks">                
+                <div *ngFor="let day of week.days" class="day" [ngClass]="{'selectable': day.selectable, 'old': day.isOld}" (click)="dayClicked(day)">{{day.dayNo}}</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

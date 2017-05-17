@@ -1,5 +1,5 @@
 
-import { Injectable, ComponentFactoryResolver, ReflectiveInjector, Type, ViewContainerRef } from '@angular/core';
+import { Injectable, ComponentFactoryResolver, ReflectiveInjector, Type, ViewContainerRef, ComponentRef } from '@angular/core';
 
 @Injectable()
 export class DynamicCreationService {
@@ -8,7 +8,7 @@ export class DynamicCreationService {
         
     }
 
-    public createInstance<T>(t: Type<T>, target: ViewContainerRef) {
+    public createInstance<T>(t: Type<T>, target: ViewContainerRef): ComponentRef<T> {
         
         let factory = this._componentFactoryResolver.resolveComponentFactory(t);
 
@@ -26,10 +26,12 @@ export class DynamicCreationService {
         // all inputs set? add it to the DOM ..
         target.insert(comp.hostView);
 
-        return <T>inst;
+        return comp;
     }
 
 }
+
+
 
  // private createWinInstance<T>(t): T {
 

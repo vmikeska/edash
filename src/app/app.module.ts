@@ -7,40 +7,63 @@ import { AppWin } from './components/base-window.component';
 import { MainMenu } from './components/main-menu.component';
 
 import { AppComponent } from './app.component';
-import { TradingScreen } from "app/components/trading-screen";
+import { TradingScreenComponent } from "app/winComponents/trading-screen.component";
 import { AddDirective } from "app/directives/add.directive";
 import { TestComp } from "app/components/test-comp.component";
 import { DataTable } from "app/components/data-table.component";
 import { ListBox } from "app/components/list-box.component";
+import { MarketNewsComponent } from "app/winComponents/market-news.component";
+import { PortfolioNewsComponent } from "app/winComponents/portfolio-news.component";
+import { TabsComponent } from "app/components/tabs.component";
+import { CalendarComponent } from "app/components/calendar.component";
 
 
+export class Data {
+  public static components = [
+    MainMenu,
 
-@NgModule({
-  declarations: [
-    AppComponent,    
-    MainMenu,    
-        
-    AppWin,
-    DataTable,
-    ListBox,
+      AppWin,
+      DataTable,
+      ListBox,
+      TabsComponent,
+      CalendarComponent,
 
-    TradingScreen,
+      TradingScreenComponent,
+      MarketNewsComponent,
+      PortfolioNewsComponent,
 
-    AddDirective,
-    TestComp,
+      
+      TestComp,
+  ];
+
+  public static config: NgModule = {
+    declarations: [
+      AppComponent,
+      
+      AddDirective,      
+    ],
+    imports: [
+      BrowserModule,
+      FormsModule,
+      HttpModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+
+    entryComponents: Data.components
+  };
+
+  public static get configComplete() {
     
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  
-  entryComponents: [TradingScreen, TestComp, DataTable, AppWin, ListBox]
-})
+    this.config.declarations = this.config.declarations.concat(Data.components);
+
+    return this.config;
+  }
+}
 
 
-export class AppModule { }
+@NgModule(Data.configComplete)
+export class AppModule {
+
+
+}

@@ -1,0 +1,51 @@
+@import "main";
+
+
+$tabs-border-color: inherit;
+$bck-color: $c-light-gray;
+$item-active-color: $c-dark-orange;// $c-vdark-gray;
+$item-hover-color: $c-green;//$c-dark-gray;
+
+
+.tabs-component {
+    border: 1px solid $tabs-border-color;
+    background-color: $bck-color;
+
+    padding-top: 3px;
+
+    .item {
+        display: inline-block;
+
+        font-size: 0.9em;
+
+        padding: 6px;
+        padding-left: 1em;
+        padding-right: 1em;
+        
+        margin-right: 2px;
+        margin-left: 2px;
+
+        cursor: pointer;
+
+        &.active {
+            color: white;
+            background-color: $item-active-color;
+        }    
+
+        &:hover {
+            color: white;
+            background-color: $item-hover-color;
+        }
+    }
+
+}
+
+.tabs-content {    
+        display: none;
+
+        padding: 0.5em;
+
+        &.active {
+            display: block;
+        }
+    }

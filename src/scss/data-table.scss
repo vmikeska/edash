@@ -1,12 +1,26 @@
 @import "main";
 
+$title-bck: $c-blue;
+$title-color: white;
+
+$table-border-color: inherit;
+
+$filter-btn-color: white;
+$filter-btn-hover: $c-green;
+
+$item-bck: white;
+$item-bck2: $c-gray;
+$item-hover: $c-green;
+
+
+$border-style: 1px solid $table-border-color;
+
 .table-wrap {
     padding: 0.5em;
 }
 
 .value-table {
-    $border-style: 1px solid $win-border;
-
+    
     width: 100%;
     
     border: none;
@@ -29,14 +43,14 @@
             padding: 8px;
 
             cursor: pointer;
-            
+
             .ico {
-                color: black;
+                color: $filter-btn-color;
             }
 
             &:hover {
                 .ico {
-                    color: $orange-dark;
+                    color: $filter-btn-hover;
                 }
             }
         }
@@ -50,10 +64,11 @@
     }
 
     tr {
-        background-color: white;
+        background-color: $item-bck;
 
         &:first-of-type {
-            background-color: $win-bar;
+            background-color: $title-bck;
+            color: $title-color;
 
             th,td {
                 border-top: $border-style;
@@ -76,7 +91,7 @@
     }
 
     .data-row:hover {
-        background-color: darkgray;
+        background-color: $item-hover;
         color: white;
     }
 

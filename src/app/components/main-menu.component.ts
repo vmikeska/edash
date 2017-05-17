@@ -1,14 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { DelayedReturn } from "app/services/DelayedReturn";
-import { WinCreationService } from "app/services/win-creation.service";
-import { TradingScreen } from "app/components/trading-screen";
-import { TestComp } from "app/components/test-comp.component";
-import { AppWin } from "app/components/base-window.component";
+import { WinOpenService } from "app/services/win-open.service";
 
 
 @Component({
   selector: 'main-menu',
   templateUrl: './main-menu.html',
+  providers: [WinOpenService]
 })
 
 export class MainMenu {
@@ -24,7 +22,7 @@ export class MainMenu {
 
     {
       id: "portfolio", ico: "icon-list-alt", text: "Portfolio", items: [
-        { id: "s1", text: "Portfoliobericht" }
+        { id: "PortfolioNews", text: "Portfoliobericht" }
       ]
     },
 
@@ -67,7 +65,7 @@ export class MainMenu {
 
   public selectedSubItems: MenuSubItem[] = [];
 
-  constructor( private _winCreateService: WinCreationService) {
+  constructor(private _winOpenService: WinOpenService) {
     this.initMenuDelay();
   }
 
@@ -93,19 +91,7 @@ export class MainMenu {
   }
 
   private itemClicked(item: MenuSubItem) {
-    
-    let id = item.id;
-    let instances;
-
-    if (id === "TradingScreen") {
-      instances = this._winCreateService.createWinInstance<TradingScreen>(TradingScreen);            
-    }
-
-    if (id === "MarketReport") {
-      instances = this._winCreateService.createWinInstance<TestComp>(TestComp);      
-    }
-
-    instances.winInstance.title = item.text;
+    this._winOpenService.openWin(item);
 
     this.deactivateFirstMenu();
     this.deactivateSecondMenu();
@@ -135,13 +121,6 @@ export class MainMenu {
   private deactivateSecondMenu() {
     this.selectedSubItems = [];
   }
-
-
-  // @Input()
-  // set win(win: AppWinVM) {
-  //   console.log(JSON.stringify(win));
-  //   this._win = win;
-  // };
 
 }
 
