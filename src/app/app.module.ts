@@ -18,29 +18,28 @@ import { TabsComponent } from "app/components/tabs.component";
 import { CalendarComponent } from "app/components/calendar.component";
 
 
-export class Data {
-  public static components = [
+const components = [
     MainMenu,
 
-      AppWin,
-      DataTable,
-      ListBox,
-      TabsComponent,
-      CalendarComponent,
+    AppWin,
+    DataTable,
+    ListBox,
+    TabsComponent,
+    CalendarComponent,
 
-      TradingScreenComponent,
-      MarketNewsComponent,
-      PortfolioNewsComponent,
+    TradingScreenComponent,
+    MarketNewsComponent,
+    PortfolioNewsComponent,
 
-      
-      TestComp,
+
+    TestComp,
   ];
 
-  public static config: NgModule = {
+  const config: NgModule = {
     declarations: [
       AppComponent,
-      
-      AddDirective,      
+
+      AddDirective,
     ],
     imports: [
       BrowserModule,
@@ -50,19 +49,12 @@ export class Data {
     providers: [],
     bootstrap: [AppComponent],
 
-    entryComponents: Data.components
-  };
+    entryComponents: components
+  }; 
 
-  public static get configComplete() {
-    
-    this.config.declarations = this.config.declarations.concat(Data.components);
+  config.declarations = config.declarations.concat(components);
 
-    return this.config;
-  }
-}
-
-
-@NgModule(Data.configComplete)
+@NgModule(config)
 export class AppModule {
 
 
