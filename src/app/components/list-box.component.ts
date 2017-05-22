@@ -10,7 +10,9 @@ import * as _ from "lodash";
 
 export class ListBox {
 
-  private _items: ListBoxItem[];
+  public selectedItem: ListBoxItem = null;
+
+  public _items: ListBoxItem[];
 
   @Input()
   public set items(is: ListBoxItem[]) {
@@ -18,8 +20,6 @@ export class ListBox {
 
     this.initItems();
   }
-
-  public selectedItem: ListBoxItem = null;
 
   @Output()
   public selectedItemChange = new EventEmitter<ListBoxItem>();

@@ -1,0 +1,63 @@
+@import "main";
+
+$btn-bck: $c-vdark-gray;
+$choose-bck: $c-gray;
+$year-hover: $a-hover-color;
+
+.year-picker {
+
+    position: relative;
+    display: inline-block;
+
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+
+    @include noselect;
+
+    .btn {
+        padding: 0.5em;
+        text-align: center;
+
+        white-space: nowrap;
+
+        color: white;
+        background-color: $btn-bck;        
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: $a-hover-color;
+        }
+
+    }
+
+    .years {
+        position: absolute;
+        right: 0;
+        top: 2em;
+
+        z-index: 100;
+
+        display: inline-block;
+
+        width: 11em;
+
+        background-color: $choose-bck;
+        color: white;
+
+        .year {
+            display: inline-block;
+            padding: 0.5em;
+
+            &:hover {
+                background-color: $year-hover;
+            }
+
+            cursor: pointer;
+        }
+    }
+
+
+
+    
+}

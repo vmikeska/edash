@@ -12,6 +12,7 @@ $item-bck: white;
 $item-bck2: $c-gray;
 $item-hover: $c-green;
 
+$row-even: $c-light-gray;
 
 $border-style: 1px solid $table-border-color;
 
@@ -21,6 +22,8 @@ $border-style: 1px solid $table-border-color;
 
 .value-table {
     
+    @include noselect;
+
     width: 100%;
     
     border: none;
@@ -76,7 +79,7 @@ $border-style: 1px solid $table-border-color;
         }
 
         &:nth-child(even) {
-            background-color: $win-bck;
+            background-color: $row-even;
         }
     }
 

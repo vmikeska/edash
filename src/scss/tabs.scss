@@ -2,19 +2,27 @@
 
 
 $tabs-border-color: inherit;
+$item-bck-color: $c-gray;
 $bck-color: $c-light-gray;
-$item-active-color: $c-dark-orange;// $c-vdark-gray;
-$item-hover-color: $c-green;//$c-dark-gray;
+$item-active-color: $c-dark-orange;
+$item-hover-color: $c-green;
 
 
 .tabs-component {
     border: 1px solid $tabs-border-color;
     background-color: $bck-color;
 
-    padding-top: 3px;
+    margin-top: 0.8em;
+    padding-bottom: 0.1em;
+    padding-left: 0.5em;
 
     .item {
         display: inline-block;
+
+        color: white;
+        background-color: $item-bck-color;
+
+        @include noselect;
 
         font-size: 0.9em;
 

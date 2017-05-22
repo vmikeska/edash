@@ -9,16 +9,20 @@ import { MainMenu } from './components/main-menu.component';
 import { AppComponent } from './app.component';
 import { TradingScreenComponent } from "app/winComponents/trading-screen.component";
 import { AddDirective } from "app/directives/add.directive";
-import { TestComp } from "app/components/test-comp.component";
 import { DataTable } from "app/components/data-table.component";
 import { ListBox } from "app/components/list-box.component";
 import { MarketNewsComponent } from "app/winComponents/market-news.component";
 import { PortfolioNewsComponent } from "app/winComponents/portfolio-news.component";
 import { TabsComponent } from "app/components/tabs.component";
 import { CalendarComponent } from "app/components/calendar.component";
+import { YearPickerComponent } from "app/components/year-picker.component";
 
+@NgModule({
+  declarations: [
+    AppComponent,
 
-const components = [
+    AddDirective,
+
     MainMenu,
 
     AppWin,
@@ -30,32 +34,70 @@ const components = [
     TradingScreenComponent,
     MarketNewsComponent,
     PortfolioNewsComponent,
+    YearPickerComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 
+  entryComponents: [
+    MainMenu,
 
-    TestComp,
-  ];
+    AppWin,
+    DataTable,
+    ListBox,
+    TabsComponent,
+    CalendarComponent,
 
-  const config: NgModule = {
-    declarations: [
-      AppComponent,
-
-      AddDirective,
-    ],
-    imports: [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
-
-    entryComponents: components
-  }; 
-
-  config.declarations = config.declarations.concat(components);
-
-@NgModule(config)
+    TradingScreenComponent,
+    MarketNewsComponent,
+    PortfolioNewsComponent,]
+})
 export class AppModule {
 
 
 }
+
+
+// const components = [
+//     MainMenu,
+
+//     AppWin,
+//     DataTable,
+//     ListBox,
+//     TabsComponent,
+//     CalendarComponent,
+
+//     TradingScreenComponent,
+//     MarketNewsComponent,
+//     PortfolioNewsComponent,
+//   ];
+
+//   const config: NgModule = {
+//     declarations: [
+//       AppComponent,
+
+//       AddDirective,
+//     ],
+//     imports: [
+//       BrowserModule,
+//       FormsModule,
+//       HttpModule,
+//     ],
+//     providers: [],
+//     bootstrap: [AppComponent],
+
+//     entryComponents: components
+//   }; 
+
+//   config.declarations = config.declarations.concat(components);
+
+// @NgModule(config)
+// export class AppModule {
+
+
+// }

@@ -7,10 +7,10 @@ import { ViewEncapsulation, AfterViewInit, ComponentFactoryResolver, ViewContain
 
 import { $, LayoutSize } from './globals';
 import { TradingScreenComponent } from "app/winComponents/trading-screen.component";
-import { TestComp } from "app/components/test-comp.component";
 import { AddDirective } from "app/directives/add.directive";
 import { WinCreationService } from "app/services/win-creation.service";
 import { DynamicCreationService } from "app/services/dynamic-creation.service";
+import { AppWin } from "app/components/base-window.component";
 
 
 @Component({
@@ -27,6 +27,7 @@ import { DynamicCreationService } from "app/services/dynamic-creation.service";
     "../scss/other.scss",
     "../scss/tabs.scss",
     "../scss/calendar.scss",
+    "../scss/year-picker.scss",
     ],
 
   host: {
@@ -105,7 +106,7 @@ export class AppComponent implements OnInit {
 
   public mouseMove(e) {
     if (WinDragging.isDragging) {
-      var parent = e.srcElement.parentElement;
+      //var parent = e.srcElement.parentElement;
 
       var newLeft = e.clientX - WinDragging.dragMouseOffsetX;
       var newTop = e.clientY - WinDragging.dragMouseOffsetY;
@@ -114,12 +115,40 @@ export class AppComponent implements OnInit {
       WinDragging.currentWin.top = newTop;
     }
 
+    if (WinResizing.isResizing) {
+      let w = WinResizing.currentWin;
+
+      let newWidth = e.clientX - w.left;
+      let newHeight = e.clientY - w.top;
+
+      if (newWidth < WinResizing.minWidth) {
+        newWidth = WinResizing.minWidth;
+      }
+
+      if (newHeight < WinResizing.minHeight) {
+        newHeight = WinResizing.minHeight;
+      }
+
+      w.width = newWidth;
+      w.height = newHeight;
+    }
+
   }
 
   public mouseUp(e: MouseEvent) {
     WinDragging.isDragging = false;
+    WinResizing.isResizing = false;
   }
 
+
+}
+
+export class WinResizing {
+  public static isResizing = false;
+  public static currentWin: AppWin;
+
+  public static minWidth = 600;  
+  public static minHeight = 450;
 
 }
 

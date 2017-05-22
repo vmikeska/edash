@@ -2,7 +2,7 @@ import { Component, Input, ComponentFactoryResolver, ViewContainerRef, AfterView
 import { WinDragging } from "../services/WinDragging"
 import { LayoutSize } from "app/globals";
 import { WinCreationService } from "app/services/win-creation.service";
-import { TestComp } from "app/components/test-comp.component";
+import { WinResizing } from "app/app.component";
 
 
 @Component({
@@ -21,8 +21,12 @@ export class AppWin implements AfterViewInit {
 
   public id: string;
   public title: string;
+  
   public left = 500;
   public top = 300;
+
+  public width = WinResizing.minWidth;
+  public height = WinResizing.minHeight;
 
   public componentRef: ComponentRef<AppWin>;
   public contentComponentRef;
@@ -42,9 +46,11 @@ export class AppWin implements AfterViewInit {
 
   }
 
-
-
-
+  public resizerStart(e: MouseEvent, resizer) {
+    WinResizing.isResizing = true;    
+    WinResizing.currentWin = this;
+  }
+  
   public ngAfterViewInit(): void {
 
 

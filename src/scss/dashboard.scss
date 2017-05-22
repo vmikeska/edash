@@ -12,6 +12,8 @@ $sec-menu-hover: $c-green;//$c-dark-orange;
 $close-color: $c-light-gray;
 $close-hover-color: $c-dark-orange;
 
+$mobile-btn-hover: $c-dark-orange;
+
 .dash-all {
     z-index: 999999;
 
@@ -55,6 +57,7 @@ $close-hover-color: $c-dark-orange;
                 .item-all {            
                     padding: 5px;
                     
+                    @include noselect;
 
                     cursor: pointer;
 
@@ -119,6 +122,8 @@ $close-hover-color: $c-dark-orange;
                         padding-bottom: 6px;
                         padding-left: 2px;
 
+                        @include noselect;
+
                         &:hover {
                             background-color:  $sec-menu-hover;
                         }
@@ -148,7 +153,7 @@ $close-hover-color: $c-dark-orange;
         cursor: pointer;
 
         &:hover {
-            color: $orange-dark;
+            color: $mobile-btn-hover;
         }
     }
 }

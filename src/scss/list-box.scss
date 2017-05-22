@@ -6,21 +6,26 @@ $bck-inactive-color: white;
 $border-active-color: none;
 $bck-active-color: white;
 
-$item-hover: $c-green;// $c-blue;
+$item-hover: $a-hover-color;
 $item-active: $c-dark-orange;
 
 
+$min-height: 8em;
 
 .list-box {
+    display: block;
+
+    
+
     border: 1px solid $border-inactive-color;
     background-color: $bck-inactive-color;
 
-    padding: 1px;
-    display: inline-block;
-
     font-size: 0.9em;
 
-    min-height: 6em;
+    min-height: $min-height;
+
+    width: 100%;
+    
 
     &:focus {
         outline: none;
@@ -30,8 +35,15 @@ $item-active: $c-dark-orange;
     }
 
     .item {
+        display: block;
+        width: 100%;
+
+        box-sizing: border-box;
+
         cursor: pointer;
         padding: 0.5em;
+
+        @include noselect;
         
         &:hover {
             background-color: $item-hover;

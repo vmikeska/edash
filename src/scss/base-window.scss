@@ -1,7 +1,5 @@
 @import "main";
 
-$win-bck: $c-light-gray;
-
 $win-bar-bck: $c-blue;
 $win-bar-color: white;
 
@@ -11,7 +9,7 @@ $win-border: $c-vdark-gray;
 .win-all {    
     display: inline-block;
 
-    background-color:$win-bck;
+    background-color: $a-win-bck;
 
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
 
@@ -38,12 +36,38 @@ $win-border: $c-vdark-gray;
     .content {
         position: relative;
     }
+
+    .resizer-corner {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        $rc-size: 10px;
+        
+        //background-color: red;
+        display: inline-block;
+        
+        width: $rc-size;
+        height: $rc-size;
+
+        cursor: nw-resize;
+    }
+
+    .resizer-right {
+        cursor: e-resize;
+    }
+
+    .resizer-bottom {
+        cursor: n-resize;
+    }
+
 }
 
 
 .mobile-resp {
 
-    .win-all {
+    .win-all {        
+
         margin-bottom: 8px;
         width: 100% !important;
     }
@@ -65,3 +89,81 @@ $win-border: $c-vdark-gray;
 }
 
 
+
+
+
+
+.form-horizontal {
+    display: table;
+    width: 100%;
+
+    &.col1 {
+        .form-item {
+            width: 100%;
+        }        
+    }
+
+    &.col2 {
+        .form-item {
+            width: 50%;
+        }                
+    }
+
+    &.col3 {
+        .form-item {
+            width: 33.3%;
+        }                
+    }
+
+    &.col4 {
+        .form-item {
+            width: 25%;
+        }                
+    }
+
+    &.col5 {
+        .form-item {
+            width: 20%;
+        }                
+    }
+
+    &.v-borders {
+        .form-item {
+            $border: 5px solid $a-win-bck;
+
+            border-left: $border;
+            border-right: $border;
+
+            &:first-of-type {
+                border-left: 0;
+            }
+
+            &:last-of-type {
+                border-right: 0;
+            }
+        }
+    }
+}
+
+.form-item {
+    display: table-cell;
+
+    //border: 1px solid red;
+
+    
+    &.white-bck {
+        background-color: white;
+    }
+}
+
+
+
+
+
+.control-title {
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 0.3em;
+
+    @include noselect;
+}

@@ -5,7 +5,10 @@
 <div 
   [id]="id" 
   class="win-all"   
-  style="min-width: 600px; min-height: 300px;" 
+  
+  [style.width.px]="width" 
+  [style.height.px]="height" 
+  
   [style.left.px]="left" 
   [style.top.px]="top">  
   
@@ -19,4 +22,6 @@
     
 
   </div>
+
+  <div class="resizer-corner" (mousedown)="resizerStart($event, 'c')"></div>
 </div>
