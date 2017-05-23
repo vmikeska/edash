@@ -35,8 +35,8 @@ export class MainMenu {
 
     {
       id: "preischart", ico: "icon-money", text: "Preischart", items: [
-        { id: "s1", text: "Echtzeit Chart" },
-        { id: "s2", text: "Historicher Chart" },
+        { id: "LiveCharts", text: "Echtzeit Chart" },
+        { id: "HistoryChart", text: "Historicher Chart" },
         { id: "s3", text: "EOD Daten" },
       ]
     },

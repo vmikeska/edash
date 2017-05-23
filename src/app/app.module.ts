@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AppWin } from './components/base-window.component';
 import { MainMenu } from './components/main-menu.component';
 
+import { ChartModule } from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+
 import { AppComponent } from './app.component';
 import { TradingScreenComponent } from "app/winComponents/trading-screen.component";
 import { AddDirective } from "app/directives/add.directive";
@@ -16,6 +19,19 @@ import { PortfolioNewsComponent } from "app/winComponents/portfolio-news.compone
 import { TabsComponent } from "app/components/tabs.component";
 import { CalendarComponent } from "app/components/calendar.component";
 import { YearPickerComponent } from "app/components/year-picker.component";
+import { LiveChartsComponent } from "app/winComponents/live-charts";
+import { HistoryChartComponent } from "app/winComponents/history-chart.component";
+
+
+export function highchartsFactory() {
+  const hc = require('highcharts/highstock');
+  const dd = require('highcharts/modules/exporting');
+  dd(hc);
+  return hc;
+}
+
+declare var require : any;
+
 
 @NgModule({
   declarations: [
@@ -30,18 +46,30 @@ import { YearPickerComponent } from "app/components/year-picker.component";
     ListBox,
     TabsComponent,
     CalendarComponent,
+    YearPickerComponent,
 
     TradingScreenComponent,
     MarketNewsComponent,
     PortfolioNewsComponent,
-    YearPickerComponent
+    LiveChartsComponent,
+    HistoryChartComponent
+
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ChartModule
   ],
-  providers: [],
+
+  providers: [
+    {
+      provide: HighchartsStatic,
+      useFactory: highchartsFactory
+    }
+  ],
+
   bootstrap: [AppComponent],
 
   entryComponents: [
@@ -55,7 +83,11 @@ import { YearPickerComponent } from "app/components/year-picker.component";
 
     TradingScreenComponent,
     MarketNewsComponent,
-    PortfolioNewsComponent,]
+    PortfolioNewsComponent,
+    LiveChartsComponent,
+    HistoryChartComponent
+
+  ]
 })
 export class AppModule {
 
