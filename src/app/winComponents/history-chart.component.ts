@@ -30,7 +30,14 @@ export class HistoryChartComponent {
     {items: [{ col: "SuperCol", value: "super col value 1"}, { col: "TheCol", value: "val1"}, {col: "AnotherCol", value: "val2"}]},
     {items: [{ col: "SuperCol", value: "Super col value 2"}, {col: "AnotherCol", value: "val4"}, { col: "TheCol", value: "val3"}]},
     {items: [{ col: "SuperCol", value: " Just another value"}, { col: "TheCol", value: "val5"}, {col: "AnotherCol", value: "val6"}]},
-    {items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]}
+    {items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]},
+    {items: [{ col: "SuperCol", value: "Super col value 2"}, {col: "AnotherCol", value: "val4"}, { col: "TheCol", value: "val3"}]},
+    {items: [{ col: "SuperCol", value: " Just another value"}, { col: "TheCol", value: "val5"}, {col: "AnotherCol", value: "val6"}]},
+    {items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]},
+    {items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]},
+    {items: [{ col: "SuperCol", value: "Super col value 2"}, {col: "AnotherCol", value: "val4"}, { col: "TheCol", value: "val3"}]},
+    {items: [{ col: "SuperCol", value: " Just another value"}, { col: "TheCol", value: "val5"}, {col: "AnotherCol", value: "val6"}]},
+    {items: [{col: "AnotherCol", value: "the another col value"}, { col: "TheCol", value: "The col value"}, { col: "SuperCol", value: " the super col value"}]},
   ];
 
   public tradePartners: ListBoxItem[] = [
@@ -38,6 +45,8 @@ export class HistoryChartComponent {
     {text: "Gazprom", value: 2},
     {text: "CEZ", value: 3},
     {text: "Naftogaz", value: 4},
+    {text: "Naftogaz", value: 5},
+    {text: "Naftogaz", value: 6},
   ];
 
   public vhps: ListBoxItem[] = [

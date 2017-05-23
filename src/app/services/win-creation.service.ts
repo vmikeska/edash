@@ -19,7 +19,7 @@ export class WinCreationService {
         winComponentRef.instance.componentRef = winComponentRef;
 
         let contentComponentRef = this._creationService.createInstance(t, winComponentRef.instance.content);
-
+ 
         return {
              winInstance: winComponentRef.instance,
              contentInstance: contentComponentRef.instance

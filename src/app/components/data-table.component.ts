@@ -32,6 +32,32 @@ export class DataTable {
   public viewData: DataTableRow[];
   private origData: DataTableRow[];
 
+  private lineHeight = 28;
+
+  public pageNo = 1;
+
+
+
+  public displayBy = 7;
+  public displayByPx = 0;
+
+  public displayBys = [5, 7, 10, 15, 20, 25, 30];
+
+  private pagingChanged(e) {
+    var val = parseInt(e.target.value);
+    this.displayBy = val;
+    this.changeDisplayLength()
+  }
+
+
+  constructor() {
+    this.changeDisplayLength();
+  }
+
+  private changeDisplayLength() {
+    this.displayByPx = (this.displayBy + 2) * this.lineHeight;
+    console.log(this.displayByPx);
+  }
 
   private orderColumnsByHeader(inRows: DataTableRow[]) {
     let outRows = [];
@@ -62,15 +88,15 @@ export class DataTable {
     var outVal = val.toString();
 
     if (type === DataColumnType.TypeString) {
-        //nothing
+      //nothing
     }
 
     if (type === DataColumnType.TypeHtml) {
       //nothing
     }
 
-    if (type === DataColumnType.TypeDate) {      
-       outVal = moment(val).format(typeArgs);
+    if (type === DataColumnType.TypeDate) {
+      outVal = moment(val).format(typeArgs);
     }
 
     return outVal;
@@ -145,6 +171,6 @@ export class DataTableRow {
 export class DataTableColumnItem {
   public disVal?: string;
   public value: any;
-  public col: string;  
+  public col: string;
 }
 

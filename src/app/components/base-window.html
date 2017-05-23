@@ -1,25 +1,15 @@
 
+<div [id]="id" class="win-all" [style.width.px]="width" [style.height.px]="height" [style.left.px]="left" [style.top.px]="top">
 
-
-
-<div 
-  [id]="id" 
-  class="win-all"   
-  
-  [style.width.px]="width" 
-  [style.height.px]="height" 
-  
-  [style.left.px]="left" 
-  [style.top.px]="top">  
-  
   <div class="bar" (mousedown)="mouseDown($event)">
     {{title}}
 
-      <span class="win-close icon-times" (click)="close()"></span>
-    </div>
+    <span class="win-close icon-times" (click)="close()"></span>
+  </div>
+
   <div class="content">
     <div #content></div>
-    
+
 
   </div>
 

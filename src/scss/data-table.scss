@@ -14,19 +14,29 @@ $item-hover: $c-green;
 
 $row-even: $c-light-gray;
 
+$service-bar-bck: $c-dark-gray;
+
+$paging-arrows-hover: $a-hover-color;
+
 $border-style: 1px solid $table-border-color;
 
 .table-wrap {
     padding: 0.5em;
+
+    //height: 100%;
+    
+    overflow-y: auto;
+
+    box-sizing: border-box;
 }
 
 .value-table {
+    border: none;
     
     @include noselect;
 
     width: 100%;
-    
-    border: none;
+
     font-size: 0.8em;
 
     th,td {
@@ -99,4 +109,50 @@ $border-style: 1px solid $table-border-color;
     }
 
 
+}
+
+.service-area {    
+    position: relative;
+    background-color: $service-bar-bck;
+    color: white;    
+    
+    height: 1.2em;
+
+    .format-by {
+
+        position: absolute;
+        left: 6px;
+        top: 4px;
+
+        .select {
+            border: 0;
+        }
+
+    }
+
+    .paging {
+        position: absolute;
+        right: 6px;
+        top: 1px;
+
+        .dir {
+            font-size: 2em;
+
+            display: inline-block;
+            vertical-align: top;            
+
+            cursor: pointer;
+
+            &:hover {
+                color: $paging-arrows-hover;
+            }
+        }
+
+        .page {
+            display: inline-block;
+            vertical-align: top;
+            padding-top: 4px;
+            font-size: 1.1em;
+        }
+    }
 }

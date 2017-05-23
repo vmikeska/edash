@@ -131,9 +131,13 @@ export class AppComponent implements OnInit {
 
       w.width = newWidth;
       w.height = newHeight;
+
+      w.onResized();
     }
 
   }
+
+
 
   public mouseUp(e: MouseEvent) {
     WinDragging.isDragging = false;

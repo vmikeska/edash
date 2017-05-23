@@ -1,4 +1,4 @@
-<div class="table-wrap">
+<div class="table-wrap" [style.height.px]="displayByPx">
 
   <table cellspacing="0" cellpadding="0" class="value-table">
 
@@ -19,7 +19,7 @@
     <tr class="data-row" *ngFor="let row of viewData">
 
       <td *ngFor="let col of row.items" [innerHTML]="col.disVal">
-        
+
       </td>
 
     </tr>
@@ -27,13 +27,25 @@
 
 
     <tr>
-      <td [attr.colspan]="headers.length">
+      <td [attr.colspan]="headers.length"  class="service-area">
 
-        <div class="service-area">
+        
 
-          Here is gonna be the service stuff
+          <span class="format-by">
+            <span>By: </span>
 
-        </div>
+            <select class="select" (change)="pagingChanged($event)">
+              <option *ngFor="let i of displayBys" [selected]="i === displayBy" value="{{i}}">{{i}}</option>        
+            </select>
+          </span>
+
+          <span class="paging">
+            <span class="dir left icon-left-dir"></span>
+            <span class="page">{{pageNo}}</span>
+            <span class="dir right icon-right-dir"></span>
+          </span>
+
+        
 
       </td>
     </tr>

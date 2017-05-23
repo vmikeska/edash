@@ -34,7 +34,15 @@ $win-border: $c-vdark-gray;
     }
 
     .content {
-        position: relative;
+        position: absolute;
+
+        top: 1.5em;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        overflow: hidden;
+
     }
 
     .resizer-corner {
@@ -44,13 +52,15 @@ $win-border: $c-vdark-gray;
 
         $rc-size: 10px;
         
-        //background-color: red;
+        background-color: none;
+
         display: inline-block;
         
         width: $rc-size;
         height: $rc-size;
 
         cursor: nw-resize;
+
     }
 
     .resizer-right {
@@ -58,7 +68,7 @@ $win-border: $c-vdark-gray;
     }
 
     .resizer-bottom {
-        cursor: n-resize;
+        cursor: n-resize;        
     }
 
 }
@@ -173,12 +183,10 @@ $win-border: $c-vdark-gray;
 
 
 
-.n-form-cont {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
+.size-fixed {
     background-color: red;
+}
+
+.size-dynamic {
+    background-color: green;    
 }
