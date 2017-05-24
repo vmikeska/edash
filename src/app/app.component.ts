@@ -121,13 +121,13 @@ export class AppComponent implements OnInit {
       let newWidth = e.clientX - w.left;
       let newHeight = e.clientY - w.top;
 
-      if (newWidth < WinResizing.minWidth) {
-        newWidth = WinResizing.minWidth;
-      }
+      // if (newWidth < WinResizing.minWidth) {
+      //   newWidth = WinResizing.minWidth;
+      // }
 
-      if (newHeight < WinResizing.minHeight) {
-        newHeight = WinResizing.minHeight;
-      }
+      // if (newHeight < WinResizing.minHeight) {
+      //   newHeight = WinResizing.minHeight;
+      // }
 
       w.width = newWidth;
       w.height = newHeight;
